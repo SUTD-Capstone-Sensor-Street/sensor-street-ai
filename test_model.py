@@ -1,5 +1,8 @@
 # Tests a specified SaveModel CNN on any image (for demonstration purposes)
 
+#Single: python test_model.py one models\resnet50_transfer_learning test\lmao.jpg
+#Multiple: python test_model.py many models\resnet50_transfer_learning test\smol_test 
+
 import tensorflow as tf
 import numpy as np
 import sys
@@ -51,6 +54,7 @@ def predict_on_single_image(model, image_path):
     prediction = model.predict(input_arr)
     predicted_labels = np.array(["a" if p > 0.5 else "no" for p in prediction])
     print("The wise algorithm prophet has decreed that there is:", predicted_labels[0], "crack")
+    print("Score:", prediction[0])
 
 if __name__ == "__main__":
     if len(sys.argv) == 4:
